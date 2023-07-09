@@ -1,0 +1,155 @@
+  .Title {
+    font-size: 40px;
+    color: #008080;
+    margin: 10px 20px 10px 20px;
+  }
+  .Title-bold {
+    font-size: 60px;
+    font-weight: bold;
+  }
+  .Title-header {
+    margin: 0px 40px 0px 40px;
+    border-bottom: 4px solid teal;
+    position: relative;
+    line-height: 48px;
+  }
+  .Title_header__block {
+    background-color: #faffe4;
+  }
+  /* 여기까지 헤더 블록의  css */
+
+  .Title-text {
+    font-size: 1.2em;
+    font-weight: 700;
+    margin: 18px 0 4px;
+    display: block;
+  }
+
+  .Title-input {
+    display: block;
+    width: 95%;
+    box-sizing: border-box;
+    font-size: 1.2em;
+    font-weight: 700;
+    border: 1px solid #ccc;
+    font-family: inherit;
+    background: #f6f6f6;
+    color: #222;
+    height: 50px;
+  }
+  .Title-block {
+    padding-top: 20px;
+    margin-left: 60px;
+  }
+
+  /* 여기까지 title 블록의 css */
+  .des-text {
+    font-size: 1.2em;
+    font-weight: 700;
+    margin: 18px 0 4px;
+    display: block;
+  }
+
+  .des-input {
+    display: block;
+    width: 95%;
+    height: 80px;
+    box-sizing: border-box;
+    font-size: 1.2em;
+    font-weight: 700;
+    border: 1px solid #ccc;
+    font-family: inherit;
+    background: #f6f6f6;
+    color: #222;
+  }
+  .des-block {
+    padding-top: 20px;
+    margin-left: 60px;
+  }
+  /* 여기까지 descriptin 블록의 css */
+  .word-Title__text {
+    font-size: 1.2em;
+    font-weight: 700;
+    margin: 18px 0 4px;
+    display: block;
+  }
+  .body-block {
+    background-color: #faffe4;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .word-block {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 100%;
+  }
+  .word-block > div {
+    margin: 0;
+    padding: 0;
+    width: 18%;
+  }
+  .word-worth__block {
+    margin: 20px 0px 20px -40px;
+    width: 100%;
+  }
+  .word {
+    display: flex;
+    width: 100%;
+    padding: 6px 8px;
+    font-size: 1.2em;
+    font-weight: 700;
+    border: 1px solid #ccc;
+    font-family: inherit;
+    background: #f6f6f6;
+    color: #222;
+  }
+  .word-worth__title_text {
+    margin-left: 60px;
+  }
+  /* 여기까지 input박스  */
+
+  .btn-submit {
+    font-family: inherit;
+    width: 93%;
+    cursor: pointer;
+    border: 0;
+    padding: 18px;
+    margin: 60px 0px 0px 60px;
+    font-weight: 700;
+    font-size: 1.4em;
+    background: #ffc107;
+    color: #222;
+  }
+
+  .alert {
+    background: #ce3505;
+    padding: 0 4px;
+    line-height: 2.4em;
+    font-size: .8em;
+    color: #f3f3f3;
+    margin-right: 78px;
+  }
+
+  .alerts {
+    margin: 0px 100px 0px 78px;
+    background: #ce3505;
+    padding: 0 4px;
+    line-height: 2.4em;
+    font-size: .8em;
+    color: #f3f3f3;
+    margin-right: 0px;
+  }
+
+  .word-block5 {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 100%;
+  }
+  .word-block5 > div {
+    margin: 0;
+    padding: 0;
+    width: 18%;
+  }
