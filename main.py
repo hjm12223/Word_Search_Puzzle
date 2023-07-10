@@ -44,6 +44,7 @@ async def save_data(data: DataModel):
 
     return
 
+
 @app.get("/get-answer-data")
 async def get_answer_data():
     conn = sqlite3.connect('WordPuzzle.db')
