@@ -1,19 +1,16 @@
-#board-container {
-    width: 400px;
-    margin: 0 auto;
+
+  .board {
     display: flex;
     flex-wrap: wrap;
-}
+    width: 420px; /* 14 * (셀 너비 + 셀 간격) */
+  }
 
-.row {
+  .cell {
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
     display: flex;
-}
-
-.cell {
-    width: 25px;
-    height: 25px;
-    border: 1px solid #000;
-    display: flex;
-    justify-content: center;
     align-items: center;
-}
+    justify-content: center;
+    font-size: 14px;
+  }

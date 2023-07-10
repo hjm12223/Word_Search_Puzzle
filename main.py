@@ -62,7 +62,6 @@ async def get_answer_data():
     return JSONResponse(content=answer_data)
 
 
-
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
