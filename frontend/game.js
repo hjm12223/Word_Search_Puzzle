@@ -6,7 +6,6 @@ function getRandomAlphabet() {
 }
 
 
-
 async function createBoard() {
   const boardContainer = document.getElementById('board-container');
 
@@ -31,9 +30,14 @@ async function createBoard() {
         const dataIndex = i * boardSize + j;
         const answer = data[dataIndex];
         if (answer) {
-          const alphabet = answer[0] // 첫 번째 알파벳 추출
-          cell.textContent = alphabet;
-        } else {
+          const characters = Array.isArray(answer) ? answer : answer.split(', '); // 문자열을 문자 배열로 변환
+          const randomIndex = Math.floor(Math.random() * characters.length); // 문자 배열에서 랜덤한 인덱스 선택
+          const word = characters[randomIndex]; // 선택한 인덱스의 단어
+          const randomAlphabet = getRandomAlphabetFromWord(word); // 단어에서 랜덤한 알파벳 추출
+          cell.textContent = randomAlphabet;
+        }
+        
+        else {
           // 정답 데이터가 아닌 경우 랜덤한 알파벳 생성
           const randomAlphabet = getRandomAlphabet();
           cell.textContent = randomAlphabet;
@@ -43,7 +47,11 @@ async function createBoard() {
         board.appendChild(cell);
       }
     }
-
+    function getRandomAlphabetFromWord(word) {
+      const randomIndex = Math.floor(Math.random() * word.length); // 단어의 길이에서 랜덤한 인덱스 선택
+      return word[randomIndex]; // 선택한 인덱스의 알파벳 반환
+    }
+    
     // 보드를 화면에 추가
     boardContainer.appendChild(board);
 
@@ -71,6 +79,7 @@ async function createBoard() {
     console.error('Failed to fetch answer data:', response.status);
   }
 }
+
 
 
 // 단어 연결선 생성 함수

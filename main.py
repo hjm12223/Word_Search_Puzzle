@@ -1,4 +1,4 @@
-from fastapi import FastAPI, UploadFile, Form, Response,Depends
+from fastapi import FastAPI, UploadFile, Form, Response, Depends
 from fastapi.staticfiles import StaticFiles
 from typing import Annotated
 from fastapi.responses import JSONResponse
@@ -12,18 +12,21 @@ from pydantic import BaseModel
 app = FastAPI()
 
 # SQLite database connection
-conn = sqlite3.connect('WordPuzzle.db')
+conn = sqlite3.connect("WordPuzzle.db")
 cursor = conn.cursor()
 
 # CREATE TABLE statement
-cursor.execute('''
+cursor.execute(
+    """
     CREATE TABLE IF NOT EXISTS my_table (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         title TEXT,
         description TEXT,
         word TEXT
     )
-''')
+"""
+)
+
 
 # Data model for request body
 class DataModel(BaseModel):
@@ -31,15 +34,18 @@ class DataModel(BaseModel):
     description: str
     words: list[str]
 
+
 @app.post("/save-data")
 async def save_data(data: DataModel):
     title = data.title
     description = data.description
-    words = ', '.join(data.words)
+    words = ", ".join(data.words)
 
     # Insert data into the database
-    cursor.execute('INSERT INTO my_table (title, description, word) VALUES (?, ?, ?)',
-                   (title, description, words))
+    cursor.execute(
+        "INSERT INTO my_table (title, description, word) VALUES (?, ?, ?)",
+        (title, description, words),
+    )
     conn.commit()
 
     return
@@ -47,7 +53,7 @@ async def save_data(data: DataModel):
 
 @app.get("/get-answer-data")
 async def get_answer_data():
-    conn = sqlite3.connect('WordPuzzle.db')
+    conn = sqlite3.connect("WordPuzzle.db")
     cursor = conn.cursor()
     cursor.execute("SELECT word FROM my_table")
     rows = cursor.fetchall()
@@ -63,16 +69,38 @@ async def get_answer_data():
     return JSONResponse(content=answer_data)
 
 
+@app.get("/get-word-data")
+async def get_word_data():
+    conn = sqlite3.connect("WordPuzzle.db")
+    cursor = conn.cursor()
+    cursor.execute("SELECT word FROM my_table")
+    rows = cursor.fetchall()
+    conn.close()
+
+    word_data = []
+
+    # 단어 데이터 추출
+    for row in rows:
+        words = row[0].split(", ")
+        word_data.extend(words)
+
+    return {"words": word_data}
+
+
 if __name__ == "__main__":
     import uvicorn
+
     uvicorn.run(app, host="0.0.0.0", port=8000)
+
 
 @app.get("/")
 async def read_main():
     return FileResponse("frontend/main.html")
 
+
 @app.get("/game.html")
 async def get_game_page():
     return FileResponse("frontend/game.html")
 
-app.mount("/", StaticFiles(directory="frontend",html=True),name = "frontend")
+
+app.mount("/", StaticFiles(directory="frontend", html=True), name="frontend")
